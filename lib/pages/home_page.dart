@@ -1,16 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:productosservicios/models/producto_models.dart';
+import 'package:productosservicios/pages/producto_page.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+import '../services/products_service.dart';
+import '../widgets/product_card.dart';
 
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final productsService = Provider.of<ProductsService>(context);
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Home Page'),
       ),
-      body: Container(),
+      body: ListView.builder(
+          itemCount: productsService.productos.length,
+          itemBuilder: ( BuildContext context, int index ) => GestureDetector(
+            onTap: () {
+
+              productsService.selectedProduct = productsService.productos[index].copy();
+
+            },
+            child: ProductCard(
+              product: productsService.productos[index],
+            ),
+          )
+      ),
+      ////
       floatingActionButton: _crearBoton(context),
     );
   }
@@ -21,4 +39,5 @@ class HomePage extends StatelessWidget {
       onPressed: () => Navigator.pushNamed(context, 'producto'),
     );
   }
+
 }

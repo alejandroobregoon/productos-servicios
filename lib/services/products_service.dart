@@ -9,7 +9,7 @@ class ProductsService extends ChangeNotifier {
   final String _baseUrl = 'proyecto-flutter-productos-default-rtdb.firebaseio.com';
   // final String _baseUrl = 'flutter-varios02-default-rtdb.firebaseio.com';
   final List<ProductoModel> productos = [];
-
+  late ProductoModel selectedProduct;
   bool isLoading = true;
   bool isSaving = false;
 
@@ -27,11 +27,11 @@ class ProductsService extends ChangeNotifier {
     productsMap.forEach((key, value) {
       final tempProduct = ProductoModel.fromMap( value );
       tempProduct.id = key;
-      this.productos.add( tempProduct );
+      productos.add( tempProduct );
     });
-    this.isLoading = false;
+    isLoading = false;
     notifyListeners();
-    return this.productos;
+    return productos;
   }
 
   Future saveOrCreateProduct( ProductoModel product ) async {

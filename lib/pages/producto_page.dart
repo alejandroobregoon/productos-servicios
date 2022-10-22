@@ -18,65 +18,6 @@ class ProductoPage extends StatelessWidget {
       child: _ProductScreenBody(productService: productService),
     );
   }
-
-// _crearNombre() {
-//   return TextFormField(
-//     // initialValue: producto.titulo,
-//     textCapitalization: TextCapitalization.sentences,
-//     decoration: InputDecoration(labelText: 'Nombre'),
-//     // onSaved: (value) => producto.titulo = value!,
-//     // validator: (value) {
-//     //   if (value!.length < 3) {
-//     //     return 'Ingrese el nombre del Producto';
-//     //   } else {
-//     //     return null;
-//     //   }
-//     // },
-//   );
-// }
-
-// _crearPrecio() {
-//   return TextFormField(
-//     keyboardType: TextInputType.number,
-//     // initialValue: producto.valor.toString(),
-//     textCapitalization: TextCapitalization.sentences,
-//     decoration: InputDecoration(labelText: 'Precio'),
-//     // onSaved: (value) => producto.valor = double.parse(value!),
-//     // validator: (value) {
-//     //   if (utils.isNumeric(value!)) {
-//     //     return null;
-//     //   } else {
-//     //     return 'Solo numeros';
-//     //   }
-//     // },
-//   );
-// }
-
-// _crearBoton() {
-//   return Container(
-//     height: 200,
-//     alignment: Alignment.center,
-//     padding: EdgeInsets.all(20),
-//     child: ElevatedButton.icon(
-//       onPressed: (){},
-//       icon: const Icon(Icons.save),
-//       label: const Text('Guardar'),
-//       style: ElevatedButton.styleFrom(
-//           backgroundColor: Colors.purple,
-//           shape: RoundedRectangleBorder(
-//               borderRadius: BorderRadius.circular(20.0))),
-//     ),
-//   );
-// }
-
-// void _submit() {
-//   if (!formkey.currentState!.validate()) return;
-//   formkey.currentState?.save();
-//
-//   // print(producto.titulo);
-//   // print(producto.valor);
-//   // print(producto.disponible);
-// }
 }
 
 class _ProductScreenBody extends StatelessWidget {
@@ -123,20 +64,6 @@ class _ProductScreenBody extends StatelessWidget {
           ],
         ),
       ),
-
-      // floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      // floatingActionButton: FloatingActionButton(
-      //   child: productService.isSaving
-      //       ? CircularProgressIndicator(color: Colors.white)
-      //       : Icon(Icons.save_outlined),
-      //   onPressed: productService.isSaving
-      //       ? null
-      //       : () async {
-      //     if (!productForm.isValidForm()) return;
-      //
-      //     await productService.saveOrCreateProduct(productForm.product);
-      //   },
-      // ),
     );
   }
 }
