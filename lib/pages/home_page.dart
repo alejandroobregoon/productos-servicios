@@ -13,20 +13,35 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: const Text('Productos', style: TextStyle(color: Colors.black)),
+        backgroundColor: Colors.greenAccent,
       ),
-      body: ListView.builder(
-          itemCount: productsService.productos.length,
-          itemBuilder: ( BuildContext context, int index ) => GestureDetector(
-            onTap: () {
 
-              productsService.selectedProduct = productsService.productos[index].copy();
+      body: Padding(
+        padding: EdgeInsets.only(top: 13),
+        child: ListView.builder(
+            itemCount: productsService.productos.length,
+            itemBuilder: ( BuildContext context, int index ) => GestureDetector(
+              onTap: () {
 
-            },
-            child: ProductCard(
-              product: productsService.productos[index],
-            ),
-          )
+                productsService.selectedProduct = productsService.productos[index].copy();
+
+              },
+              child: Dismissible(
+                key: UniqueKey(),
+                background: Container(
+                  color: Colors.redAccent,
+                  child: Icon(Icons.delete),
+                ),
+                onDismissed: (direccion){
+                  productsService.deleteProduct(productsService.productos[index]);
+                },
+                child: ProductCard(
+                  product: productsService.productos[index],
+                ),
+              ),
+            )
+        ),
       ),
       ////
       floatingActionButton: _crearBoton(context),
@@ -35,8 +50,9 @@ class HomePage extends StatelessWidget {
 
   _crearBoton(BuildContext context) {
     return FloatingActionButton(
+      backgroundColor: Colors.greenAccent,
       child: const Icon(Icons.add),
-      onPressed: () => Navigator.pushNamed(context, 'producto'),
+      onPressed: () => Navigator.pushNamed(context, 'producto', arguments: ProductsService()),
     );
   }
 

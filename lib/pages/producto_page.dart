@@ -58,7 +58,7 @@ class _ProductScreenBody extends StatelessWidget {
                           : Icon(Icons.save_outlined),
                     label: Text('Guardar'),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.purple,
+                        backgroundColor: Colors.greenAccent,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0))))),
           ],
@@ -118,7 +118,7 @@ class _ProductForm extends StatelessWidget {
               SwitchListTile.adaptive(
                   value: product.disponible,
                   title: Text('Disponible'),
-                  activeColor: Colors.indigo,
+                  activeColor: Colors.greenAccent,
                   onChanged: productForm.updateAvailability),
               SizedBox(height: 30)
             ],

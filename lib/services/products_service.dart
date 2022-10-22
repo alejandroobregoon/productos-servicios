@@ -56,7 +56,7 @@ class ProductsService extends ChangeNotifier {
     //TODO: Actualizar el listado de productos
     final index = this.productos.indexWhere((element) => element.id == product.id );
     this.productos[index] = product;
-
+    print(decodedData); //TODO : NO VA ESTO
     return product.id!;
 
   }
@@ -67,6 +67,13 @@ class ProductsService extends ChangeNotifier {
     final decodedData = json.decode( resp.body );
     product.id = decodedData['name'];
     productos.add(product);
+    return product.id!;
+  }
+
+  Future<String> deleteProduct( ProductoModel product ) async {
+    final url = Uri.https( _baseUrl, 'productos/${ product.id }.json');
+    final resp = await http.delete( url, body: product.toJson() );
+    print(resp.body);
     return product.id!;
   }
 
